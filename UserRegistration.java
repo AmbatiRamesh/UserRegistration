@@ -100,6 +100,18 @@ public class UserRegistration {
             System.out.println("PasswordRule_4 is Invalid--!!");
         }
     }
+    public void checkEmail_2(){
+        System.out.println("Enter Email_2 : ");
+        String email_2 = scanner.next();
+        Pattern pattern = Pattern.compile("^[a-zA-Z]{3,}[+-.]?[A-za-z0-9]*[@]{1}[a-z]+[.]?[a-z]*[.]?[a-z]");
+        Matcher matcher = pattern.matcher(email_2);
+        boolean b = matcher.matches();
+        if (b){
+            System.out.println("Email Name is Valid---!!");
+        }else {
+            System.out.println("Email Name is Invalid--!!");
+        }
+    }
     public static void main(String[] args) {
         UserRegistration user = new UserRegistration();
         user.checkFirstName();
@@ -110,5 +122,6 @@ public class UserRegistration {
         user.checkPasswordRule_2();
         user.checkPasswordRule_3();
         user.checkPasswordRule_4();
+        user.checkEmail_2();
     }
 }
