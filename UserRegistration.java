@@ -17,7 +17,7 @@ public class UserRegistration {
         }
     }
     public void checkLastName(){
-        System.out.println("Enter First Name : ");
+        System.out.println("Enter Lat Name : ");
         String lastName = scanner.next();
         Pattern pattern = Pattern.compile("^[A-Z]{1}[a-z]{2,}");
         Matcher matcher = pattern.matcher(lastName);
