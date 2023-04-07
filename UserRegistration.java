@@ -52,11 +52,24 @@ public class UserRegistration {
             System.out.println("PhoneNumber is Invalid--!!");
         }
     }
+    public void checkPasswordRule_1(){
+        System.out.println("Enter PasswordRule_1 : ");
+        String rule_1 = scanner.next();
+        Pattern pattern = Pattern.compile("[A-Za-z]{8,}");
+        Matcher matcher = pattern.matcher(rule_1);
+        boolean b = matcher.matches();
+        if (b){
+            System.out.println("PasswordRule_1 is Valid---!!");
+        }else {
+            System.out.println("PasswordRule_1 is Invalid--!!");
+        }
+    }
     public static void main(String[] args) {
         UserRegistration user = new UserRegistration();
         user.checkFirstName();
         user.checkLastName();
         user.checkEmail();
         user.checkPhoneNumber();
+        user.checkPasswordRule_1();
     }
 }
