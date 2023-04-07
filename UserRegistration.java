@@ -13,12 +13,24 @@ public class UserRegistration {
         if (b){
             System.out.println("First Name is Valid---!!");
         }else {
-                 System.out.println("First Name is Invalid--!!");
+            System.out.println("First Name is Invalid--!!");
+        }
+    }
+    public void checkLastName(){
+        System.out.println("Enter First Name : ");
+        String lastName = scanner.next();
+        Pattern pattern = Pattern.compile("^[A-Z]{1}[a-z]{2,}");
+        Matcher matcher = pattern.matcher(lastName);
+        boolean b = matcher.matches();
+        if (b){
+            System.out.println("Last Name is Valid---!!");
+        }else {
+            System.out.println("Last Name is Invalid--!!");
         }
     }
     public static void main(String[] args) {
         UserRegistration user = new UserRegistration();
         user.checkFirstName();
-
+        user.checkLastName();
     }
 }
