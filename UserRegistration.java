@@ -40,10 +40,23 @@ public class UserRegistration {
             System.out.println("Email Name is Invalid--!!");
         }
     }
+    public void checkPhoneNumber(){
+        System.out.println("Enter PhoneNumber : ");
+        String phoneNumber = scanner.next();
+        Pattern pattern = Pattern.compile("^[+][1-9]{2}|[0-9]{9}");
+        Matcher matcher = pattern.matcher(phoneNumber);
+        boolean b = matcher.matches();
+        if (b){
+            System.out.println("PhoneNumber is Valid---!!");
+        }else {
+            System.out.println("PhoneNumber is Invalid--!!");
+        }
+    }
     public static void main(String[] args) {
         UserRegistration user = new UserRegistration();
         user.checkFirstName();
         user.checkLastName();
         user.checkEmail();
+        user.checkPhoneNumber();
     }
 }
