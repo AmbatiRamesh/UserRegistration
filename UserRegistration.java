@@ -88,7 +88,18 @@ public class UserRegistration {
             System.out.println("PasswordRule_3 is Invalid--!!");
         }
     }
-
+    public void checkPasswordRule_4(){
+        System.out.println("Enter PasswordRule_4 : ");
+        String rule_4 = scanner.next();
+        Pattern pattern = Pattern.compile("^[A-Z]{1}[a-z0-9]{6,}[!@#$%^&*()=]{1}");
+        Matcher matcher = pattern.matcher(rule_4);
+        boolean b = matcher.matches();
+        if (b){
+            System.out.println("PasswordRule_4 is Valid---!!");
+        }else {
+            System.out.println("PasswordRule_4 is Invalid--!!");
+        }
+    }
     public static void main(String[] args) {
         UserRegistration user = new UserRegistration();
         user.checkFirstName();
@@ -98,5 +109,6 @@ public class UserRegistration {
         user.checkPasswordRule_1();
         user.checkPasswordRule_2();
         user.checkPasswordRule_3();
+        user.checkPasswordRule_4();
     }
 }
