@@ -1,33 +1,69 @@
 package com.bridgelabz.userRegistration;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import java.util.Arrays;
-import java.util.Collection;
+import org.junit.jupiter.api.*;
+
 import static org.junit.Assert.assertEquals;
 
-@RunWith(Parameterized.class)
-public class Testing{
-    private final String email;
-    private final Boolean expectedResult;
-    public UserRegistration userRegistration;
-
-    public Testing(String email, Boolean expectedResult) {
-        this.email = email;
-        this.expectedResult = expectedResult;
+public class Testing {
+    @BeforeAll
+    static void beforeAllTestMsg() {
+        System.out.println("-----Welcome to User Registration Problem-----");
     }
-    @Before
-    public void initilize(){
-    userRegistration = new UserRegistration();
+    @AfterAll
+    static void afterAllTestPassedMsg(){
+        System.out.println("All Test Case Passed");
     }
-    @Parameterized.Parameters
-    public static Collection input(){
-        return Arrays.asList(new Object[][]{{"abc@yahoo.com",true},{"abc-100@yahoo.com",true},{"abc.100@yahoo.com",true},{"abc111@abc.com",true},{"abc-100@abc.net",true},{"abc.100@abc.com.au",true},{"abc@1.com",true},{"abc@gmail.com.com",true},{"abc+100@gmail.com",true}});
+    @AfterEach
+    public void afterEachTestPassMsg() {
+        System.out.println("Happy Test Case");
+    }
+    @BeforeEach
+    public void beforeEachTestPassMsg(){
+        System.out.println("Sad Test Case");
     }
     @Test
-    public void testEmailValidation(){
-        System.out.println(email+ "======== is valid");
-        assertEquals(expectedResult,userRegistration.checkEmail(email));
+    public void givenFirstNameShouldReturnTrue() throws UserRegistration.UserValidationException {
+        UserRegistration userRegistration = new UserRegistration();
+        assertEquals(true, userRegistration.checkFirstName("Ramesh"));
     }
+    @Test
+    public void givenLastNameShouldReturnTrue() throws UserRegistration.UserValidationException {
+        UserRegistration userRegistration = new UserRegistration();
+        assertEquals(true, userRegistration.checkLastName("Ambati"));
+    }
+    @Test
+    public void givenEmailIdShouldReturnTrue() throws UserRegistration.UserValidationException {
+        UserRegistration userRegistration = new UserRegistration();
+        assertEquals(true, userRegistration.checkEmailId("rameshambati.ab@gmail.com"));
+    }
+    @Test
+    public void givenPhoneNumberShouldReturnTrue() throws UserRegistration.UserValidationException {
+        UserRegistration userRegistration = new UserRegistration();
+        assertEquals(true, userRegistration.phoneNumber("91 9640827483"));
+    }
+    @Test
+    public void givenPasswordRule1ShouldReturnTrue() throws UserRegistration.UserValidationException {
+        UserRegistration userRegistration = new UserRegistration();
+        assertEquals(true, userRegistration.password("viratkohli"));
+    }
+    @Test
+    public void givenPasswordRule2ShouldReturnTrue() throws UserRegistration.UserValidationException {
+        UserRegistration userRegistration = new UserRegistration();
+        assertEquals(true, userRegistration.password2("Msdhonii"));
+    }
+    @Test
+    public void givenPasswordRule3ShouldReturnTrue() throws UserRegistration.UserValidationException {
+        UserRegistration userRegistration = new UserRegistration();
+        assertEquals(true, userRegistration.password3("Rohitsharma45"));
+    }
+    @Test
+    public void givenPasswordRule4ShouldReturnTrue() throws UserRegistration.UserValidationException {
+        UserRegistration userRegistration = new UserRegistration();
+        assertEquals(true, userRegistration.password4("Rohitsharma45@"));
+    }
+    @Test
+    public void givenEmailSeparateShouldReturnTrue() throws UserRegistration.UserValidationException {
+        UserRegistration userRegistration = new UserRegistration();
+        assertEquals(true, userRegistration.checkEmailSeparate("abc@yahoo.com"));
+    }
+
 }
